@@ -1,4 +1,4 @@
-"use strict"
+'use strict';
 
 var CLOUD_X = 100;
 var CLOUD_Y = 10;
@@ -17,10 +17,10 @@ var renderCloud = function (ctx, x, y, color) {
 
 var roundTimes = [];
 
-var getMaxElement = function(arr){
+var getMaxElement = function (arr) {
     var maxElement = arr[0];
     
-    for(var i = 1; i < arr.length; i++){
+    for (var i = 1; i < arr.length; i++){
         if (arr[i] > maxElement){
             maxElement = arr[i];
         }
