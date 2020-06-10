@@ -30,17 +30,18 @@ function randomHSL() {
   return 'hsl(240, ' + S + '%, 50%)';
 }
 
+var renderText = function (ctx, color, font, text, x, y) {
+  ctx.fillStyle = color;
+  ctx.font = font;
+  ctx.fillText(text, x, y);
+};
+
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
   var maxTime = getMaxElement(times);
-  var renderText = function () {
-    ctx.fillStyle = '#000';
-    ctx.font = '16px PT Mono';
-    ctx.fillText('Ура вы победили!', CLOUD_X + GAP * 2, GAP + FONT_GAP * 2);
-    ctx.fillText('Список результатов:', CLOUD_X + GAP * 2, GAP * 3 + FONT_GAP * 2);
-  };
-  renderText();
+  renderText(ctx, '#000', '16px PT Mono', 'Ура вы победили!', CLOUD_X + GAP * 2, GAP + FONT_GAP * 2);
+  renderText(ctx, '#000', '16px PT Mono', 'Список результатов:', CLOUD_X + GAP * 2, GAP * 3 + FONT_GAP * 2);
   for (var i = 0; i < players.length; i++) {
     ctx.fillStyle = '#000';
     ctx.fillText(players[i], CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, (GAP + FONT_GAP) * 4 + MAX_BAR_HEIGHT + FONT_GAP);
