@@ -44,8 +44,8 @@ window.renderStatistics = function (ctx, players, times) {
   renderText(ctx, '#000', '16px PT Mono', 'Список результатов:', CLOUD_X + GAP * 2, GAP * 3 + FONT_GAP * 2);
   for (var i = 0; i < players.length; i++) {
     ctx.fillStyle = '#000';
-    ctx.fillText(players[i], CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, (GAP + FONT_GAP) * 4 + MAX_BAR_HEIGHT + FONT_GAP);
-    ctx.fillText(Math.round(times[i]), CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, (GAP + FONT_GAP) * 4 + (MAX_BAR_HEIGHT - MAX_BAR_HEIGHT * Math.round(times[i]) / maxTime) - GAP);
+    renderText(ctx, '#000', '16px PT Mono', players[i], CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, (GAP + FONT_GAP) * 4 + MAX_BAR_HEIGHT + FONT_GAP);
+    renderText(ctx, '#000', '16px PT Mono', Math.round(times[i]), CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, (GAP + FONT_GAP) * 4 + (MAX_BAR_HEIGHT - MAX_BAR_HEIGHT * Math.round(times[i]) / maxTime) - GAP);
     ctx.fillStyle = randomHSL();
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
