@@ -11,18 +11,22 @@ userDialog.classList.remove('hidden');
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
-var getRandomAttribute = function (list) {
-  var attribute = list[Math.floor(Math.random() * (list.length - 1)) + 1];
-  return attribute;
+var getRandomInt = function (min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+};
+
+var getRandomElement = function (list) {
+  var element = list[getRandomInt(1, list.length)];
+  return element;
 };
 
 var wizards = [];
 var createWizard = function (wizard) {
   for (var i = 0; i < 4; i++) {
     wizard[i] = {
-      name: getRandomAttribute(WIZARD_NAMES, WIZARD_SURNAMES) + ' ' + getRandomAttribute(WIZARD_SURNAMES),
-      coatColor: getRandomAttribute(WIZARD_COAT_COLORS),
-      eyesColor: getRandomAttribute(WIZARD_EYES_COLORS)};
+      name: getRandomElement(WIZARD_NAMES) + ' ' + getRandomElement(WIZARD_SURNAMES),
+      coatColor: getRandomElement(WIZARD_COAT_COLORS),
+      eyesColor: getRandomElement(WIZARD_EYES_COLORS)};
   }
 };
 createWizard(wizards);
