@@ -7,8 +7,8 @@ var WIZARD_EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 var userDialog = document.querySelector('.setup');
-var open = document.querySelector('.setup-open');
-var close = document.querySelector('.setup-close');
+var openButton = document.querySelector('.setup-open');
+var closeButton = document.querySelector('.setup-close');
 var openIcon = document.querySelector('.setup-open-icon');
 var userNameInput = document.querySelector('.setup-user-name');
 var submitButton = document.querySelector('.setup-submit');
@@ -84,21 +84,21 @@ var closePopup = function () {
   document.removeEventListener('keydown', onPopupEscPress);
 };
 
-open.addEventListener('click', function () {
+openButton.addEventListener('click', function () {
   openPopup();
 });
 
-open.addEventListener('keydown', function (evt) {
+openButton.addEventListener('keydown', function (evt) {
   if (evt.key === 'Enter') {
     openPopup();
   }
 });
 
-close.addEventListener('click', function () {
+closeButton.addEventListener('click', function () {
   closePopup();
 });
 
-close.addEventListener('keydown', function (evt) {
+closeButton.addEventListener('keydown', function (evt) {
   if (evt.key === 'Enter') {
     evt.preventDefault();
     closePopup();
