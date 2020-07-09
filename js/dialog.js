@@ -5,8 +5,8 @@
   var WIZARD_EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
   var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
+  var userDialog = document.querySelector('.setup');
   var userNameInput = document.querySelector('.setup-user-name');
-  var submitButton = document.querySelector('.setup-submit');
   var wizardForm = document.querySelector('.setup-wizard-form');
   var fireballColor = document.querySelector('.setup-fireball-wrap');
   var eyesInputColor = document.querySelector('.eyes-color');
@@ -44,22 +44,6 @@
     }
   });
 
-  var sendForm = function () {
-    if (isValid) {
-      wizardForm.submit();
-    }
-  };
-
-  submitButton.addEventListener('click', function () {
-    sendForm();
-  });
-
-  submitButton.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Enter') {
-      sendForm();
-    }
-  });
-
   var calorize = function (colors, elementColor, inputColor) {
     var k = window.random.getRandomInt(0, colors.length - 1);
     if (elementColor.tagName.toLowerCase() === 'div') {
@@ -80,6 +64,15 @@
 
   fireballColor.addEventListener('click', function () {
     calorize(FIREBALL_COLORS, fireballColor, fireballInputColor);
+  });
+
+  wizardForm.addEventListener('submit', function (evt) {
+    if (isValid) {
+      window.backend.save(new FormData(wizardForm), function () {
+        userDialog.classList.add('hidden');
+      }, window.backend.errorHandler);
+    }
+    evt.preventDefault();
   });
 
 })();
